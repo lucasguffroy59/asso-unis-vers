@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navButtons = document.querySelectorAll('.nav-button[data-section]');
     const sections = document.querySelectorAll('.content-section');
-    const actuBtn = document.getElementById('actualites-btn');
 
     // Fonction pour afficher une section
     function showSection(sectionId) {
@@ -32,20 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
             showSection(sectionId);
         });
     });
-
-    // Gestion du bouton Actualités (redirection Facebook)
-    if (actuBtn) {
-        actuBtn.addEventListener('click', function() {
-            // URL à remplacer par le lien de la page Facebook de l'association
-            const facebookUrl = 'https://www.facebook.com/share/1DfZXjFBxr/'; // Remplacer par l'URL Facebook fournie par l'utilisateur
-            
-            if (facebookUrl === '#') {
-                alert('Le lien vers les actualités sera bientôt disponible.');
-            } else {
-                window.open(facebookUrl, '_blank');
-            }
-        });
-    }
 
     // Afficher la première section par défaut au chargement
     showSection('identite');

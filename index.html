@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" 
+            src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v18.0"></script>
+
     <!-- Bandeau avec logo -->
     <header class="header-banner">
         <img src="bandeau.jpg" alt="Unis-Vers Social" class="banner-image">
@@ -37,7 +42,7 @@
         <button class="nav-button" data-section="equipes">Nos équipes</button>
         <button class="nav-button" data-section="modalites">Nos modalités d'intervention</button>
         <button class="nav-button" data-section="partenaires">Nos partenaires & financeurs</button>
-        <button class="nav-button" id="actualites-btn">Actualités</button>
+        <button class="nav-button" data-section="actualites">Actualités</button>
         <button class="nav-button" data-section="contact">Infos & Contact</button>
     </nav>
 
@@ -132,6 +137,23 @@
                 <li>Les marchés publics et appels à projets, garants de la pérennité et de l'indépendance financière</li>
             </ul>
             <p>L'association vise à terme l'obtention des agréments Entreprise Solidaire d'Utilité Sociale (ESUS) et Association Reconnue d'Utilité Publique (ARUP), gages de reconnaissance et de solidité de son action.</p>
+        </section>
+
+        <!-- Actualités -->
+        <section class="content-section" id="actualites">
+            <h1>Actualités</h1>
+            <p>Retrouvez toutes nos dernières actualités et actions sur notre page Facebook :</p>
+            <div class="fb-container">
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61581809484641&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true" 
+                        width="500" 
+                        height="600" 
+                        style="border:none;overflow:hidden;max-width:100%;" 
+                        scrolling="no" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <p style="margin-top: 20px;"><a href="https://www.facebook.com/people/Association-Unis-Vers-Social/61581809484641/" target="_blank" class="contact-link">→ Voir notre page Facebook</a></p>
         </section>
 
         <!-- Infos & Contact -->
