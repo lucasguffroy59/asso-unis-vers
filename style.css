@@ -1,0 +1,233 @@
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* Bandeau header */
+.header-banner {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.social-networks {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.social-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-right: 5px;
+}
+
+.social-link {
+    color: #555;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.social-link:hover {
+    color: #1877f2;
+    transform: scale(1.1);
+}
+
+.social-link:last-child:hover {
+    color: #e4405f;
+}
+
+/* Bouton Faire un don */
+.donation-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.donation-button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation */
+.navigation {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-button {
+    background-color: transparent;
+    color: #555;
+    border: 2px solid #e0e0e0;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-button:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+    color: #333;
+}
+
+.nav-button.active {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+/* Contenu principal */
+.main-content {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    min-height: 60vh;
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-section h1 {
+    font-size: 32px;
+    color: #222;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #333;
+}
+
+.content-section h2 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.content-section p {
+    margin-bottom: 15px;
+    text-align: justify;
+    color: #555;
+}
+
+.content-section ul {
+    margin: 20px 0;
+    padding-left: 25px;
+}
+
+.content-section li {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.content-section strong {
+    color: #333;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navigation {
+        padding: 15px 10px;
+    }
+
+    .nav-button {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    .social-networks {
+        position: static;
+        margin: 15px;
+        justify-content: center;
+    }
+
+    .content-section h1 {
+        font-size: 26px;
+    }
+
+    .content-section h2 {
+        font-size: 20px;
+    }
+
+    .main-content {
+        margin: 20px auto;
+    }
+}
