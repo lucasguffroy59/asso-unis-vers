@@ -188,6 +188,23 @@ body {
     color: #333;
 }
 
+.content-section a {
+    color: #333;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.content-section a:hover {
+    color: #555;
+}
+
+.contact-link {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
 /* Footer */
 .footer {
     background-color: #333;
