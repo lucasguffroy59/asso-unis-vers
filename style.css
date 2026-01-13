@@ -14,24 +14,35 @@ body {
 
 /* Bandeau header */
 .header-banner {
-    position: relative;
     width: 100%;
-    background-color: #fff;
+    background: linear-gradient(135deg, #b8d4e8 0%, #d4e6f1 100%);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
 }
 
-.banner-image {
+.header-content {
     width: 100%;
-    height: auto;
+    max-width: none;
+    padding: 0 20px 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-image {
+    height: 140px;
+    width: auto;
     display: block;
-    max-height: 250px;
-    object-fit: cover;
+    margin-left: 0;
+}
+
+.header-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .social-networks {
-    position: absolute;
-    top: 20px;
-    right: 20px;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -66,9 +77,6 @@ body {
 
 /* Bouton Faire un don */
 .donation-button {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
     background-color: #333;
     color: #fff;
     text-decoration: none;
@@ -78,6 +86,7 @@ body {
     font-weight: 500;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .donation-button:hover {
@@ -237,31 +246,30 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
     .header-banner {
-        position: relative;
-        padding-bottom: 10px;
+        padding: 15px 0;
     }
 
-    .banner-image {
-        max-height: 95px;
-        min-height: 95px;
-        object-fit: cover;
-        object-position: center;
+    .header-content {
+        flex-wrap: wrap;
+        padding: 0 15px;
+    }
+
+    .logo-image {
+        height: 100px;
+        margin-right: auto;
     }
 
     .header-actions {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         gap: 10px;
-        padding: 10px;
+        margin-left: auto;
     }
 
     .social-networks {
-        position: static;
         margin: 0;
         justify-content: center;
-        width: calc(50% - 5px);
         padding: 8px 12px;
-        display: flex;
     }
 
     .social-label {
@@ -274,13 +282,11 @@ body {
     }
 
     .donation-button {
-        position: static;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0;
         text-align: center;
-        width: calc(50% - 5px);
         padding: 10px 12px;
         font-size: 14px;
     }
@@ -339,24 +345,25 @@ body {
 }
 
 @media (max-width: 480px) {
-    .banner-image {
-        max-height: 80px;
-        min-height: 80px;
+    .header-banner {
+        padding: 12px 0;
     }
 
-    .header-banner {
-        padding-bottom: 10px;
+    .header-content {
+        padding: 0 12px;
+    }
+
+    .logo-image {
+        height: 80px;
     }
 
     .header-actions {
-        padding: 8px;
         gap: 8px;
     }
 
     .social-networks {
         padding: 8px 10px;
         gap: 8px;
-        width: calc(50% - 4px);
     }
 
     .social-label {
@@ -371,7 +378,6 @@ body {
     .donation-button {
         padding: 9px 10px;
         font-size: 13px;
-        width: calc(50% - 4px);
     }
 
     .navigation {
