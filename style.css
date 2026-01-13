@@ -216,6 +216,16 @@ body {
     font-size: 14px;
 }
 
+.footer-link {
+    color: #fff;
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.footer-link:hover {
+    opacity: 0.8;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .header-banner {
