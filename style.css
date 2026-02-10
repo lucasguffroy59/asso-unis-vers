@@ -1,3 +1,32 @@
+/* Overlay temporaire - À supprimer pour réactiver le site */
+.construction-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #b8d4e8 0%, #d4e6f1 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.construction-message {
+    background: white;
+    padding: 40px 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.construction-message h1 {
+    color: #333;
+    font-size: 28px;
+    font-weight: 500;
+}
+/* Fin overlay temporaire */
+
 /* Reset et styles de base */
 * {
     margin: 0;
