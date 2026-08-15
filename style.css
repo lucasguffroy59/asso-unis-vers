@@ -5,11 +5,17 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f8f9fa;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* Bandeau header */
@@ -131,8 +137,161 @@ body {
     border-color: #333;
 }
 
-.nav-button.nav-hidden {
+.nav-button.nav-hidden,
+.nav-item.nav-hidden,
+.nav-item.has-submenu.nav-hidden {
     display: none;
+}
+
+/* Nav avec sous-menu (Qui sommes-nous ? / Nos équipes / Nos services & missions) */
+.has-submenu {
+    position: relative;
+}
+
+.nav-item.has-submenu {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.nav-category-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-chevron-inline {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.nav-item-buttons {
+    display: flex;
+    align-items: stretch;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.nav-item-buttons:hover {
+    border-color: #999;
+}
+
+.nav-item .nav-item-buttons .nav-button {
+    border: none;
+    border-radius: 0;
+}
+
+.nav-chevron-toggle {
+    background-color: transparent;
+    border: none;
+    border-left: 2px solid #e0e0e0;
+    padding: 0 14px;
+    font-size: 12px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-chevron-toggle:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.has-submenu.open > .nav-category-toggle .nav-chevron-inline {
+    transform: rotate(180deg);
+}
+
+.has-submenu.open > .nav-item-buttons > .nav-chevron-toggle {
+    transform: rotate(180deg);
+}
+
+.has-submenu.open > .nav-subitem-row > .nav-chevron-toggle {
+    transform: rotate(90deg);
+}
+
+.nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 6px;
+    min-width: 220px;
+    background-color: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    padding: 8px;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 20;
+}
+
+.has-submenu.open > .nav-dropdown {
+    display: flex;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .has-submenu:hover > .nav-dropdown {
+        display: flex;
+    }
+}
+
+.nav-dropdown button {
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    padding: 10px 14px;
+    border-radius: 4px;
+    color: #555;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.nav-dropdown button:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Sous-menu imbriqué "Nos équipes" (dans "Qui sommes-nous ?"), déroulé à droite */
+.nav-subitem.has-submenu {
+    display: block;
+    width: 100%;
+}
+
+.nav-subitem-row {
+    display: flex;
+    align-items: stretch;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-subitem-row:hover {
+    background-color: #f0f0f0;
+}
+
+.nav-subitem-row .nav-button {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 14px;
+}
+
+.nav-subitem-row .nav-chevron-toggle {
+    border-left: none;
+    padding: 0 12px;
+    font-size: 11px;
+}
+
+.nav-dropdown.nav-dropdown-flyout {
+    top: 0;
+    left: 100%;
+    margin-top: 0;
+    margin-left: 6px;
 }
 
 .nav-profile-switcher {
@@ -369,11 +528,74 @@ body {
         margin-top: 0;
     }
 
-    .nav-button {
+    .navigation > .nav-button {
         padding: 10px 16px;
         font-size: 13px;
         flex: 1 1 calc(50% - 8px);
         min-width: 140px;
+    }
+
+    .nav-item.has-submenu {
+        flex: 1 1 100%;
+    }
+
+    .nav-item .nav-item-buttons .nav-button {
+        flex: 1 1 auto;
+        padding: 10px 16px;
+        font-size: 13px;
+        min-height: 44px;
+    }
+
+    .nav-chevron-toggle {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .nav-category-toggle {
+        padding: 10px 16px;
+        font-size: 13px;
+        min-height: 44px;
+    }
+
+    .nav-dropdown {
+        position: static;
+        width: 100%;
+        margin-top: 8px;
+        box-shadow: none;
+        border-style: dashed;
+    }
+
+    .nav-dropdown button {
+        min-height: 44px;
+    }
+
+    .nav-category-toggle {
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+
+    .nav-subitem-row .nav-button {
+        min-height: 44px;
+    }
+
+    .nav-subitem-row .nav-chevron-toggle {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Le sous-menu imbriqué se déroule en accordéon indenté plutôt qu'en volet à droite */
+    .nav-dropdown.nav-dropdown-flyout {
+        position: static;
+        left: auto;
+        margin-top: 8px;
+        margin-left: 16px;
+        width: calc(100% - 16px);
+    }
+
+    .profile-switch-select {
+        padding: 10px 16px;
+        font-size: 13px;
+        width: 100%;
     }
 
     .content-section h1 {

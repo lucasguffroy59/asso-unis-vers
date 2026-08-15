@@ -49,11 +49,33 @@
 
     <!-- Navigation -->
     <nav class="navigation">
-        <button class="nav-button nav-always active" data-section="identite">Notre histoire</button>
-        <button class="nav-button nav-profile-only nav-hidden"
-                data-target-usager="services-usager"
-                data-target-professionnel="services-professionnel">Nos services & missions</button>
-        <button class="nav-button nav-always" data-section="equipes">Nos équipes</button>
+        <div class="nav-item has-submenu" data-submenu="qui-sommes-nous">
+            <button type="button" class="nav-button nav-category-toggle active" aria-expanded="false">
+                Qui sommes-nous ? <span class="nav-chevron-inline">▾</span>
+            </button>
+            <div class="nav-dropdown" data-submenu-panel="qui-sommes-nous">
+                <button type="button" class="nav-button nav-always active" data-section="identite">Notre histoire</button>
+
+                <div class="nav-subitem has-submenu" data-submenu="equipes">
+                    <div class="nav-subitem-row">
+                        <button type="button" class="nav-button nav-always" data-section="equipes">Nos équipes</button>
+                        <button type="button" class="nav-chevron-toggle nav-chevron-right" aria-label="Afficher les sous-pages" aria-expanded="false">▸</button>
+                    </div>
+                    <div class="nav-dropdown nav-dropdown-flyout" data-submenu-panel="equipes"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-item has-submenu nav-profile-only nav-hidden" data-submenu="services">
+            <div class="nav-item-buttons">
+                <button class="nav-button"
+                        data-target-usager="services-usager"
+                        data-target-professionnel="services-professionnel">Nos services & missions</button>
+                <button type="button" class="nav-chevron-toggle" aria-label="Afficher les sous-pages" aria-expanded="false">▾</button>
+            </div>
+            <div class="nav-dropdown" data-submenu-panel="services"></div>
+        </div>
+
         <button class="nav-button nav-profile-only nav-hidden"
                 data-target-usager="modalites-usager"
                 data-target-professionnel="modalites-professionnel">Nos modalités d'intervention</button>
@@ -100,6 +122,26 @@
         <!-- Nos services & missions - Usager -->
         <section class="content-section" id="services-usager">
             <h1>Nos services & missions</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos services & missions - sous-pages Usager -->
+        <section class="content-section" id="services-usager-sous-1">
+            <h1>Sous-page 1</h1>
+            <p>Contenu à venir.</p>
+        </section>
+        <section class="content-section" id="services-usager-sous-2">
+            <h1>Sous-page 2</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos services & missions - sous-pages Professionnel -->
+        <section class="content-section" id="services-professionnel-sous-1">
+            <h1>Sous-page 1</h1>
+            <p>Contenu à venir.</p>
+        </section>
+        <section class="content-section" id="services-professionnel-sous-2">
+            <h1>Sous-page 2</h1>
             <p>Contenu à venir.</p>
         </section>
 
@@ -154,6 +196,36 @@
             <p><strong>Le bureau de l'association</strong>, garant du projet associatif, définit les orientations stratégiques et veille à la cohérence des actions menées.</p>
             <p><strong>Les partenaires professionnels</strong>, qu'ils soient associatifs, institutionnels ou privés, participent à une prise en charge globale et coordonnée des publics.</p>
             <p><strong>Les salariés</strong>, amenés à rejoindre la structure dans le cadre de marchés publics ou d'appels à projets, viendront renforcer l'expertise et la capacité d'action de l'association.</p>
+        </section>
+
+        <!-- Nos équipes - sous-pages (par défaut, sans profil) -->
+        <section class="content-section" id="equipes-none-1">
+            <h1>Sous-page 1</h1>
+            <p>Contenu à venir.</p>
+        </section>
+        <section class="content-section" id="equipes-none-2">
+            <h1>Sous-page 2</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos équipes - sous-pages Usager -->
+        <section class="content-section" id="equipes-usager-1">
+            <h1>Sous-page 1</h1>
+            <p>Contenu à venir.</p>
+        </section>
+        <section class="content-section" id="equipes-usager-2">
+            <h1>Sous-page 2</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos équipes - sous-pages Professionnel -->
+        <section class="content-section" id="equipes-professionnel-1">
+            <h1>Sous-page 1</h1>
+            <p>Contenu à venir.</p>
+        </section>
+        <section class="content-section" id="equipes-professionnel-2">
+            <h1>Sous-page 2</h1>
+            <p>Contenu à venir.</p>
         </section>
 
         <!-- Nos modalités d'intervention - Usager -->
