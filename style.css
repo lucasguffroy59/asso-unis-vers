@@ -2,15 +2,16 @@
    Palette centralisée — seul endroit à modifier pour changer les couleurs
    ========================================================================== */
 :root {
-    /* Marque (dérivée du logo Unis-Vers Social, ton doux/dilué) */
-    --color-primary: #8FB5A3;
-    --color-primary-hover: #6B9884;
-    --color-secondary: #E3B98C;
-    --color-secondary-hover: #D19F68;
-    --color-secondary-tint: #FBF1E8;
-    --color-offwhite: #FAF6F1;
-    --color-highlight-bg: #F0CFA0;
-    --color-highlight-text: #5C3D1E;
+    /* Marque */
+    --color-primary: #A7B89E;
+    --color-primary-hover: #8E9C86;
+    --color-secondary: #B9B1D9;
+    --color-secondary-hover: #9D96B8;
+    --color-secondary-tint: #F1EFF7;
+    --color-offwhite: #F3F1F7;
+    --color-highlight-bg: #B9B1D9;
+    --color-highlight-bg-soft: #EAE8F4;
+    --color-highlight-text: #2E2748;
 
     /* Neutres */
     --color-white: #ffffff;
@@ -86,7 +87,8 @@ body {
     align-items: center;
     gap: 15px;
     background-color: rgba(255, 255, 255, 0.95);
-    padding: 10px 20px;
+    border: 2px solid var(--color-primary);
+    padding: 8px 18px;
     border-radius: 25px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
@@ -117,9 +119,10 @@ body {
 /* Bouton Faire un don (secondaire, calqué sur "Nos réseaux") */
 .donation-button-secondary {
     background-color: rgba(255, 255, 255, 0.95);
-    color: var(--color-secondary);
+    color: var(--color-text);
+    border: 2px solid var(--color-primary);
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 8px 18px;
     border-radius: 25px;
     font-size: 15px;
     font-weight: 500;
@@ -130,7 +133,7 @@ body {
 
 .donation-button-secondary:hover {
     transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(227, 185, 140, 0.25);
+    box-shadow: 0 2px 8px rgba(167, 184, 158, 0.35);
 }
 
 /* Bouton Adhérer (principal) */
@@ -142,7 +145,7 @@ body {
     border-radius: 25px;
     font-size: 15px;
     font-weight: 500;
-    box-shadow: 0 2px 8px rgba(143, 181, 163, 0.3);
+    box-shadow: 0 2px 8px rgba(167, 184, 158, 0.3);
     transition: all 0.3s ease;
     white-space: nowrap;
 }
@@ -150,7 +153,7 @@ body {
 .join-button:hover {
     background-color: var(--color-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(143, 181, 163, 0.4);
+    box-shadow: 0 4px 12px rgba(167, 184, 158, 0.4);
 }
 
 .join-button.nav-hidden {
@@ -359,12 +362,17 @@ body {
 
 /* Sélecteur "Qui suis-je ?" — mis en avant dans la hiérarchie visuelle */
 .profile-selector {
-    background-color: var(--color-highlight-bg);
+    background-color: var(--color-highlight-bg-soft);
+    background-image: url('qui-suis-je.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid var(--color-highlight-bg);
     border-radius: 8px;
     padding: 20px 25px;
     margin-bottom: 25px;
     text-align: center;
-    box-shadow: 0 4px 14px rgba(240, 207, 160, 0.35);
+    box-shadow: 0 4px 14px rgba(185, 177, 217, 0.2);
 }
 
 .profile-selector.profile-selector-hidden {
@@ -388,7 +396,7 @@ body {
 .profile-button {
     background-color: var(--color-white);
     color: var(--color-highlight-text);
-    border: 2px solid var(--color-highlight-text);
+    border: 2px solid var(--color-primary);
     padding: 10px 22px;
     font-size: 15px;
     font-weight: 500;
@@ -398,7 +406,8 @@ body {
 }
 
 .profile-button:hover {
-    background-color: var(--color-highlight-text);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
     color: var(--color-white);
 }
 
