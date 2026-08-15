@@ -56,15 +56,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let currentProfile = null; // null, 'usager' ou 'professionnel'
 
+    const BASE_PATH = '/private';
+
     function profileFromPath(pathname) {
-        const path = pathname.replace(/\/+$/, '');
-        if (path === '/usager') return 'usager';
-        if (path === '/professionnel') return 'professionnel';
+        const path = pathname.replace(/\/+$/, '') || '/';
+        if (path === BASE_PATH + '/usager') return 'usager';
+        if (path === BASE_PATH + '/professionnel') return 'professionnel';
+        if (path === BASE_PATH + '/adherent') return 'adherent';
         return null;
     }
 
     function pathForProfile(profile) {
-        return profile ? '/' + profile : '/';
+        return profile ? BASE_PATH + '/' + profile : BASE_PATH;
     }
 
     function showSection(sectionId) {

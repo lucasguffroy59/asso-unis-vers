@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unis-Vers Social - Association</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Restaure le vrai chemin après le fallback GitHub Pages (voir 404.html)
+        (function () {
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.pathname) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
+</head>
+<body>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" 
+            src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v18.0"></script>
+
+    <!-- Bandeau avec logo -->
+    <header class="header-banner">
+        <div class="header-content">
+            <img src="logo.png" alt="Unis-Vers Social" class="logo-image" id="logoHome">
+            <div class="header-actions">
+                <div class="social-networks">
+                    <span class="social-label">Nos réseaux</span>
+                    <a href="https://www.facebook.com/share/1DfZXjFBxr/" target="_blank" class="social-link" title="Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="#" target="_blank" class="social-link" title="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+            <a href="https://www.helloasso.com/associations/unis-vers-social/paiements/dons-association-unis-vers-social" target="_blank" class="donation-button-secondary">
+                Faire un don
+            </a>
+            <a href="https://urls.fr/rb1Bbg" target="_blank" class="join-button" id="joinButton">
+                Adhérer pour 1€
+            </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-item has-submenu nav-not-adherent" data-submenu="qui-sommes-nous">
+            <button type="button" class="nav-button nav-category-toggle active" aria-expanded="false">
+                Qui sommes-nous ? <span class="nav-chevron-inline">▾</span>
+            </button>
+            <div class="nav-dropdown" data-submenu-panel="qui-sommes-nous">
+                <button type="button" class="nav-button nav-always active" data-section="identite">Notre histoire</button>
+
+                <div class="nav-subitem has-submenu" data-submenu="equipes">
+                    <div class="nav-subitem-row">
+                        <button type="button" class="nav-button nav-always" data-section="equipes">Nos équipes</button>
+                        <button type="button" class="nav-chevron-toggle nav-chevron-right" aria-label="Afficher les sous-pages" aria-expanded="false">▸</button>
+                    </div>
+                    <div class="nav-dropdown nav-dropdown-flyout" data-submenu-panel="equipes"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-item has-submenu nav-profile-only nav-hidden" data-submenu="services">
+            <div class="nav-item-buttons">
+                <button class="nav-button"
+                        data-target-usager="services-usager"
+                        data-target-professionnel="services-professionnel">Nos services & missions</button>
+                <button type="button" class="nav-chevron-toggle" aria-label="Afficher les sous-pages" aria-expanded="false">▾</button>
+            </div>
+            <div class="nav-dropdown" data-submenu-panel="services"></div>
+        </div>
+
+        <button class="nav-button nav-profile-only nav-hidden"
+                data-target-usager="modalites-usager"
+                data-target-professionnel="modalites-professionnel">Nos modalités d'intervention</button>
+        <button class="nav-button nav-pro-only nav-hidden"
+                data-target-professionnel="partenaires-professionnel">Nos partenaires & financeurs</button>
+
+        <div class="nav-item has-submenu nav-adherent-only nav-hidden" data-submenu="assemblee">
+            <button type="button" class="nav-button nav-category-toggle" aria-expanded="false">
+                Assemblée générale <span class="nav-chevron-inline">▾</span>
+            </button>
+            <div class="nav-dropdown" data-submenu-panel="assemblee"></div>
+        </div>
+
+        <button class="nav-button nav-always" data-section="actualites">Actualités</button>
+        <button class="nav-button nav-always" data-section="contact">Infos & Contact</button>
+        <span class="nav-profile-switcher" id="profileSwitcher"></span>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+        <!-- Notre histoire -->
+        <section class="content-section active" id="identite">
+            <!-- Sélecteur de profil -->
+            <div class="profile-selector">
+                <p class="profile-selector-label">Qui suis-je ?</p>
+                <div class="profile-selector-options">
+                    <button class="profile-button" data-profile="usager">Usager</button>
+                    <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                    <button class="profile-button" data-profile="adherent">Adhérent</button>
+                </div>
+            </div>
+
+            <h1>Notre histoire</h1>
+
+            <p>Unis-Vers Social est une association loi 1901, créée en 2025 à Lens, au cœur du bassin minier. Elle s'inscrit pleinement dans l'Économie Sociale et Solidaire et agit au quotidien pour lutter contre la précarité, l'isolement et les inégalités sociales sur le territoire du Nord et du Pas-de-Calais.</p>
+            <p>Portée par des valeurs humanistes, de solidarité et de dignité, l'association est née du constat que, malgré l'existence de nombreux dispositifs publics, une partie de la population reste éloignée de ses droits et des solutions existantes.</p>
+            <p>Notre ambition est simple : rendre les droits accessibles, accompagner sans stigmatiser et favoriser l'autonomie des personnes afin de leur permettre de redevenir actrices de leur parcours de vie.</p>
+            <p>Unis-Vers Social agit dans une logique de proximité, de complémentarité avec les acteurs du territoire et de co-construction de solutions durables.</p>
+        </section>
+
+        <!-- Accueil profil Usager -->
+        <section class="content-section" id="accueil-usager">
+            <h1>Espace Usager</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Accueil profil Professionnel -->
+        <section class="content-section" id="accueil-professionnel">
+            <h1>Espace Professionnel</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Accueil profil Adhérent -->
+        <section class="content-section" id="accueil-adherent">
+            <h1>Espace Adhérent</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Écran de code d'accès Adhérent -->
+        <section class="content-section" id="adherent-code">
+            <h1>Espace Adhérent</h1>
+            <p>Cet espace est réservé aux adhérents de l'association. Merci de saisir votre code d'accès pour continuer.</p>
+            <form id="adherentCodeForm" class="adherent-code-form">
+                <input type="text" id="adherentCodeInput" class="adherent-code-input" placeholder="Code d'accès" autocomplete="off">
+                <button type="submit" class="nav-button">Valider</button>
+            </form>
+            <p id="adherentCodeError" class="adherent-code-error" hidden>Code incorrect, merci de réessayer.</p>
+        </section>
+
+        <!-- Assemblée générale - Documents -->
+        <section class="content-section" id="ag-documents">
+            <h1>Documents</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Assemblée générale - Évènements à venir -->
+        <section class="content-section" id="ag-evenements">
+            <h1>Évènements à venir</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Assemblée générale - Mes propositions -->
+        <section class="content-section" id="ag-propositions">
+            <h1>Mes propositions</h1>
+            <p>Vous avez une idée à soumettre au bureau de l'association ? Utilisez le formulaire ci-dessous.</p>
+            <form id="propositionForm" class="proposition-form">
+                <label for="propositionNom">Nom</label>
+                <input type="text" id="propositionNom" name="nom" required>
+
+                <label for="propositionPrenom">Prénom</label>
+                <input type="text" id="propositionPrenom" name="prenom" required>
+
+                <label for="propositionEmail">Email</label>
+                <input type="email" id="propositionEmail" name="email" required>
+
+                <label for="propositionTitre">Titre de la proposition</label>
+                <input type="text" id="propositionTitre" name="titre" required>
+
+                <label for="propositionDetail">Votre proposition</label>
+                <textarea id="propositionDetail" name="detail" rows="6" required></textarea>
+
+                <button type="submit" class="nav-button">Je soumets mon idée</button>
+            </form>
+            <p id="propositionSuccess" class="proposition-success" hidden>Merci, votre proposition a bien été enregistrée !</p>
+        </section>
+
+        <!-- Nos services & missions - Usager -->
+        <section class="content-section" id="services-usager">
+            <h1>Nos services & missions</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos services & missions - sous-pages Usager -->
+        <section class="content-section" id="services-usager-sous-1">
+            <h1>Sous-page 1</h1>
+            <p>Contenu à venir.</p>
+        </section>
+        <section class="content-section" id="services-usager-sous-2">
+            <h1>Sous-page 2</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos services & missions - sous-pages Professionnel -->
+        <section class="content-section" id="services-professionnel-sous-1">
+            <h1>Sous-page 1</h1>
+            <p>Contenu à venir.</p>
+        </section>
+        <section class="content-section" id="services-professionnel-sous-2">
+            <h1>Sous-page 2</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos services & missions - Professionnel -->
+        <section class="content-section" id="services-professionnel">
+            <h1>Nos services & missions</h1>
+            <p>Unis-Vers Social intervient auprès de l'ensemble des habitants qui rencontrent des difficultés sociales, administratives ou d'accès aux droits.</p>
+            
+            <h2>Nos missions principales</h2>
+            <ul>
+                <li>Réaliser un diagnostic social individualisé et définir des objectifs d'accompagnement adaptés</li>
+                <li>Informer les personnes sur leurs droits et dispositifs existants</li>
+                <li>Accompagner les démarches administratives et sociales, tout en favorisant l'autonomie</li>
+                <li>Constituer et déposer des dossiers d'aides nécessitant l'intervention d'un travailleur social</li>
+                <li>Garantir l'accès aux droits des publics isolés ou fragilisés, notamment par des actions « aller-vers »</li>
+                <li>Faciliter la prise en charge des problématiques sociales sur le territoire</li>
+                <li>Travailler en réseau avec les acteurs sociaux, médico-sociaux et institutionnels</li>
+            </ul>
+
+            <h2>Le pôle social</h2>
+            <p>Nos actions s'organisent autour de plusieurs axes complémentaires :</p>
+            <ul>
+                <li><strong>Accès au droit :</strong> information, orientation, accompagnement administratif</li>
+                <li><strong>Vie sociale :</strong> ateliers et actions collectives favorisant le lien social (budget, logement, parentalité, insertion, numérique, écologie…)</li>
+                <li><strong>Marchés publics et appels à projets :</strong> développement d'actions structurantes pour pérenniser les missions de l'association</li>
+            </ul>
+        </section>
+
+        <!-- Nos équipes -->
+        <section class="content-section" id="equipes">
+            <!-- Sélecteur de profil -->
+            <div class="profile-selector">
+                <p class="profile-selector-label">Qui suis-je ?</p>
+                <div class="profile-selector-options">
+                    <button class="profile-button" data-profile="usager">Usager</button>
+                    <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                    <button class="profile-button" data-profile="adherent">Adhérent</button>
+                </div>
+            </div>
+
+            <h1>Nos équipes</h1>
+            <p>L'association repose sur une dynamique collective et engagée.</p>
+            
+            <h2>Les dirigeantes</h2>
+            <p>L'association est portée par un duo complémentaire de professionnelles engagées :</p>
+            <ul>
+                <li><strong>Gwen</strong>, conseillère en économie sociale et familiale, co-dirigeante de l'association</li>
+                <li><strong>Léa</strong>, monitrice éducatrice, co-dirigeante de l'association</li>
+            </ul>
+            
+            <h2>Une équipe engagée</h2>
+            <p><strong>Les bénévoles</strong>, au cœur de notre action, partagent nos valeurs de solidarité et de bienveillance. Ils contribuent activement à la vie de l'association et à la lutte contre les difficultés du quotidien.</p>
+            <p><strong>Le bureau de l'association</strong>, garant du projet associatif, définit les orientations stratégiques et veille à la cohérence des actions menées.</p>
+            <p><strong>Les partenaires professionnels</strong>, qu'ils soient associatifs, institutionnels ou privés, participent à une prise en charge globale et coordonnée des publics.</p>
+            <p><strong>Les salariés</strong>, amenés à rejoindre la structure dans le cadre de marchés publics ou d'appels à projets, viendront renforcer l'expertise et la capacité d'action de l'association.</p>
+        </section>
+
+        <!-- Nos équipes - sous-pages (par défaut, sans profil) -->
+        <section class="content-section" id="equipes-none-1">
+            <h1>Sous-page 1</h1>
+            <p>Contenu à venir.</p>
+        </section>
+        <section class="content-section" id="equipes-none-2">
+            <h1>Sous-page 2</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos équipes - sous-pages Usager -->
+        <section class="content-section" id="equipes-usager-1">
+            <h1>Sous-page 1</h1>
+            <p>Contenu à venir.</p>
+        </section>
+        <section class="content-section" id="equipes-usager-2">
+            <h1>Sous-page 2</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos équipes - sous-pages Professionnel -->
+        <section class="content-section" id="equipes-professionnel-1">
+            <h1>Sous-page 1</h1>
+            <p>Contenu à venir.</p>
+        </section>
+        <section class="content-section" id="equipes-professionnel-2">
+            <h1>Sous-page 2</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos modalités d'intervention - Usager -->
+        <section class="content-section" id="modalites-usager">
+            <h1>Nos modalités d'intervention</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos modalités d'intervention - Professionnel -->
+        <section class="content-section" id="modalites-professionnel">
+            <h1>Nos modalités d'intervention</h1>
+            <p>Unis-Vers Social privilégie une intervention de proximité, adaptée aux réalités du territoire.</p>
+            <ul>
+                <li>Permanences physiques dans les communes partenaires mettant à disposition un lieu d'accueil</li>
+                <li>Permanence téléphonique du lundi au vendredi, de 9h à 17h</li>
+                <li>Contact par mail pour toute demande effectuée en dehors des horaires d'ouverture</li>
+                <li>Accueil sur rendez-vous ou orientation par les partenaires du territoire</li>
+            </ul>
+            <p>Les modalités précises (lieux, horaires, prise de rendez-vous) sont communiquées en fonction des communes et des partenariats en cours.</p>
+            <p>Notre secteur d'intervention couvre en priorité la Communauté d'Agglomération de Lens-Liévin et la Communauté d'Agglomération Béthune Bruay Artois Lys Romane, avec une vocation à s'étendre à l'ensemble du Nord et du Pas-de-Calais.</p>
+        </section>
+
+        <!-- Nos partenaires & financeurs - Professionnel -->
+        <section class="content-section" id="partenaires-professionnel">
+            <h1>Nos partenaires & financeurs</h1>
+            <p>Unis-Vers Social inscrit son action dans une logique de coopération territoriale.</p>
+            
+            <h2>Nos partenaires</h2>
+            <p>Nous travaillons en complémentarité avec :</p>
+            <ul>
+                <li>Les collectivités territoriales et les communes</li>
+                <li>Les associations locales</li>
+                <li>Les structures publiques et privées du champ social et médico-social</li>
+            </ul>
+            <p>Ces partenariats permettent d'harmoniser les pratiques, de faciliter l'orientation des publics et de construire des actions communes au service des habitants.</p>
+
+            <h2>Nos financeurs</h2>
+            <p>Le fonctionnement de l'association repose sur :</p>
+            <ul>
+                <li>Les subventions publiques, notamment pour le démarrage de l'activité</li>
+                <li>Les dons et cotisations, ouverts à tous</li>
+                <li>Les marchés publics et appels à projets, garants de la pérennité et de l'indépendance financière</li>
+            </ul>
+            <p>L'association vise à terme l'obtention des agréments Entreprise Solidaire d'Utilité Sociale (ESUS) et Association Reconnue d'Utilité Publique (ARUP), gages de reconnaissance et de solidité de son action.</p>
+        </section>
+
+        <!-- Actualités -->
+        <section class="content-section" id="actualites">
+            <!-- Sélecteur de profil -->
+            <div class="profile-selector">
+                <p class="profile-selector-label">Qui suis-je ?</p>
+                <div class="profile-selector-options">
+                    <button class="profile-button" data-profile="usager">Usager</button>
+                    <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                    <button class="profile-button" data-profile="adherent">Adhérent</button>
+                </div>
+            </div>
+
+            <h1>Actualités</h1>
+            <p>Retrouvez toutes nos dernières actualités et actions sur notre page Facebook :</p>
+            <div class="fb-container">
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61581809484641&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true" 
+                        width="500" 
+                        height="600" 
+                        style="border:none;overflow:hidden;max-width:100%;" 
+                        scrolling="no" 
+                        frameborder="0" 
+                        allowfullscreen="true" 
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+            <p style="margin-top: 20px;"><a href="https://www.facebook.com/people/Association-Unis-Vers-Social/61581809484641/" target="_blank" class="contact-link">→ Voir notre page Facebook</a></p>
+        </section>
+
+        <!-- Infos & Contact -->
+        <section class="content-section" id="contact">
+            <!-- Sélecteur de profil -->
+            <div class="profile-selector">
+                <p class="profile-selector-label">Qui suis-je ?</p>
+                <div class="profile-selector-options">
+                    <button class="profile-button" data-profile="usager">Usager</button>
+                    <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                    <button class="profile-button" data-profile="adherent">Adhérent</button>
+                </div>
+            </div>
+
+            <h1>Infos & Contact</h1>
+            
+            <h2>Nous contacter</h2>
+            <p><strong>Téléphone :</strong> 01 XX XX XX XX</p>
+            <p><strong>Email :</strong> contact@unis-vers-social.fr</p>
+            <p><strong>Adresse :</strong> Le Toit Commun au 15 Rue Lanoy à Lens, Nord-Pas-de-Calais</p>
+            
+            <h2>Horaires de permanence</h2>
+            <p><strong>Permanence téléphonique :</strong><br>
+Du lundi au vendredi, de 9h à 17h</p>
+            <p><strong>Permanences physiques :</strong><br>
+Sur rendez-vous dans les communes partenaires</p>
+            
+            <h2>Suivez-nous</h2>
+            <p>Retrouvez toutes nos actualités et actions sur nos réseaux sociaux :</p>
+            <ul>
+                <li><strong>Facebook :</strong> <a href="https://www.facebook.com/share/1DfZXjFBxr/" target="_blank">Page Facebook Unis-Vers Social</a></li>
+                <li><strong>Instagram :</strong> Prochainement disponible</li>
+            </ul>
+            
+            <h2>Faire un don</h2>
+            <p>Votre soutien est essentiel pour poursuivre nos actions au service des personnes en difficulté. Vous pouvez faire un don en ligne via HelloAsso :</p>
+            <p><a href="https://www.helloasso.com/associations/unis-vers-social/paiements/dons-association-unis-vers-social" target="_blank" class="contact-link">→ Faire un don en ligne</a></p>
+            
+            <h2>Rejoindre l'association</h2>
+            <p>Vous souhaitez devenir bénévole ou adhérer à l'association ? N'hésitez pas à nous contacter pour échanger sur les différentes façons de vous impliquer.</p>
+        </section>
+
+        <!-- Mentions légales -->
+        <section class="content-section" id="mentions-legales">
+            <h1>Mentions légales</h1>
+
+            <h2>Éditeur du site</h2>
+            <p>Le présent site est édité par l'association <strong>Unis-Vers Social</strong>, association loi 1901.</p>
+            <p><strong>Forme juridique :</strong> Association loi 1901</p>
+            <p><strong>Siège social / coordonnées :</strong> Le Toit Commun, 15 Rue Lanoy, Lens, Nord-Pas-de-Calais</p>
+            <p><strong>SIRET :</strong> 990 890 220 00017</p>
+            <p><strong>Code APE :</strong> 94.99Z</p>
+            <p><strong>Email :</strong> contact@unis-vers-social.fr</p>
+
+            <h2>Directrice de la publication</h2>
+            <p>La publication du site est assurée par les co-dirigeantes de l'association, Gwen et Léa.</p>
+
+            <h2>Hébergement</h2>
+            <p>Ce site est hébergé par :</p>
+            <p><strong>GitHub, Inc.</strong><br>
+            88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis</p>
+
+            <h2>Nom de domaine</h2>
+            <p>Le nom de domaine de ce site est enregistré auprès de :</p>
+            <p><strong>OVH SAS</strong><br>
+            2 rue Kellermann, 59100 Roubaix, France</p>
+
+            <h2>Propriété intellectuelle</h2>
+            <p>L'ensemble des contenus présents sur ce site (textes, images, logo) est la propriété d'Unis-Vers Social, sauf mention contraire, et ne peut être reproduit sans autorisation préalable.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 <a href="Statuts association Unis-Vers Social.pdf" target="_blank" class="footer-link">Unis-Vers Social</a> - Association loi 1901</p>
+        <p>Lens, Nord-Pas-de-Calais</p>
+        <p><button type="button" class="footer-link footer-link-button" data-section="mentions-legales">Mentions légales</button></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
