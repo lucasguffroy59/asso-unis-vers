@@ -1,32 +1,3 @@
-/* Overlay temporaire - À supprimer pour réactiver le site */
-.construction-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #b8d4e8 0%, #d4e6f1 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.construction-message {
-    background: white;
-    padding: 40px 60px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    text-align: center;
-}
-
-.construction-message h1 {
-    color: #333;
-    font-size: 28px;
-    font-weight: 500;
-}
-/* Fin overlay temporaire */
-
 /* Reset et styles de base */
 * {
     margin: 0;
@@ -158,6 +129,78 @@ body {
     background-color: #333;
     color: #fff;
     border-color: #333;
+}
+
+.nav-button.nav-hidden {
+    display: none;
+}
+
+.nav-profile-switcher {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.profile-switch-select {
+    background-color: transparent;
+    color: #555;
+    border: 2px dashed #999;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.profile-switch-select:hover {
+    background-color: #f0f0f0;
+    border-color: #666;
+    color: #333;
+}
+
+/* Sélecteur "Qui suis-je ?" */
+.profile-selector {
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.profile-selector.profile-selector-hidden {
+    display: none;
+}
+
+.content-section .profile-selector-label {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333;
+    text-align: center;
+}
+
+.profile-selector-options {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.profile-button {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #333;
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.profile-button:hover {
+    background-color: #333;
+    color: #fff;
 }
 
 /* Contenu principal */

@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unis-Vers Social - Association</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Restaure le vrai chemin après le fallback GitHub Pages (voir 404.html)
+        (function () {
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect !== location.pathname) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
 </head>
 <body>
-    <!-- Overlay temporaire - À supprimer pour réactiver le site -->
-    <div class="construction-overlay">
-        <div class="construction-message">
-            <h1>Site en cours de construction</h1>
-        </div>
-    </div>
-    <!-- Fin overlay temporaire -->
-    
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" 
@@ -47,28 +49,62 @@
 
     <!-- Navigation -->
     <nav class="navigation">
-        <button class="nav-button active" data-section="identite">Notre identité</button>
-        <button class="nav-button" data-section="services">Nos services & missions</button>
-        <button class="nav-button" data-section="equipes">Nos équipes</button>
-        <button class="nav-button" data-section="modalites">Nos modalités d'intervention</button>
-        <button class="nav-button" data-section="partenaires">Nos partenaires & financeurs</button>
-        <button class="nav-button" data-section="actualites">Actualités</button>
-        <button class="nav-button" data-section="contact">Infos & Contact</button>
+        <button class="nav-button nav-always active" data-section="identite">Notre histoire</button>
+        <button class="nav-button nav-profile-only nav-hidden"
+                data-target-usager="services-usager"
+                data-target-professionnel="services-professionnel">Nos services & missions</button>
+        <button class="nav-button nav-always" data-section="equipes">Nos équipes</button>
+        <button class="nav-button nav-profile-only nav-hidden"
+                data-target-usager="modalites-usager"
+                data-target-professionnel="modalites-professionnel">Nos modalités d'intervention</button>
+        <button class="nav-button nav-pro-only nav-hidden"
+                data-target-professionnel="partenaires-professionnel">Nos partenaires & financeurs</button>
+        <button class="nav-button nav-always" data-section="actualites">Actualités</button>
+        <button class="nav-button nav-always" data-section="contact">Infos & Contact</button>
+        <span class="nav-profile-switcher" id="profileSwitcher"></span>
     </nav>
 
     <!-- Contenu principal -->
     <main class="main-content">
-        <!-- Notre identité -->
+        <!-- Notre histoire -->
         <section class="content-section active" id="identite">
-            <h1>Notre identité</h1>
+            <!-- Sélecteur de profil -->
+            <div class="profile-selector">
+                <p class="profile-selector-label">Qui suis-je ?</p>
+                <div class="profile-selector-options">
+                    <button class="profile-button" data-profile="usager">Usager</button>
+                    <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                </div>
+            </div>
+
+            <h1>Notre histoire</h1>
+
             <p>Unis-Vers Social est une association loi 1901, créée en 2025 à Lens, au cœur du bassin minier. Elle s'inscrit pleinement dans l'Économie Sociale et Solidaire et agit au quotidien pour lutter contre la précarité, l'isolement et les inégalités sociales sur le territoire du Nord et du Pas-de-Calais.</p>
             <p>Portée par des valeurs humanistes, de solidarité et de dignité, l'association est née du constat que, malgré l'existence de nombreux dispositifs publics, une partie de la population reste éloignée de ses droits et des solutions existantes.</p>
             <p>Notre ambition est simple : rendre les droits accessibles, accompagner sans stigmatiser et favoriser l'autonomie des personnes afin de leur permettre de redevenir actrices de leur parcours de vie.</p>
             <p>Unis-Vers Social agit dans une logique de proximité, de complémentarité avec les acteurs du territoire et de co-construction de solutions durables.</p>
         </section>
 
-        <!-- Nos services & missions -->
-        <section class="content-section" id="services">
+        <!-- Accueil profil Usager -->
+        <section class="content-section" id="accueil-usager">
+            <h1>Espace Usager</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Accueil profil Professionnel -->
+        <section class="content-section" id="accueil-professionnel">
+            <h1>Espace Professionnel</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos services & missions - Usager -->
+        <section class="content-section" id="services-usager">
+            <h1>Nos services & missions</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos services & missions - Professionnel -->
+        <section class="content-section" id="services-professionnel">
             <h1>Nos services & missions</h1>
             <p>Unis-Vers Social intervient auprès de l'ensemble des habitants qui rencontrent des difficultés sociales, administratives ou d'accès aux droits.</p>
             
@@ -94,6 +130,15 @@
 
         <!-- Nos équipes -->
         <section class="content-section" id="equipes">
+            <!-- Sélecteur de profil -->
+            <div class="profile-selector">
+                <p class="profile-selector-label">Qui suis-je ?</p>
+                <div class="profile-selector-options">
+                    <button class="profile-button" data-profile="usager">Usager</button>
+                    <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                </div>
+            </div>
+
             <h1>Nos équipes</h1>
             <p>L'association repose sur une dynamique collective et engagée.</p>
             
@@ -111,8 +156,14 @@
             <p><strong>Les salariés</strong>, amenés à rejoindre la structure dans le cadre de marchés publics ou d'appels à projets, viendront renforcer l'expertise et la capacité d'action de l'association.</p>
         </section>
 
-        <!-- Nos modalités d'intervention -->
-        <section class="content-section" id="modalites">
+        <!-- Nos modalités d'intervention - Usager -->
+        <section class="content-section" id="modalites-usager">
+            <h1>Nos modalités d'intervention</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Nos modalités d'intervention - Professionnel -->
+        <section class="content-section" id="modalites-professionnel">
             <h1>Nos modalités d'intervention</h1>
             <p>Unis-Vers Social privilégie une intervention de proximité, adaptée aux réalités du territoire.</p>
             <ul>
@@ -125,8 +176,8 @@
             <p>Notre secteur d'intervention couvre en priorité la Communauté d'Agglomération de Lens-Liévin et la Communauté d'Agglomération Béthune Bruay Artois Lys Romane, avec une vocation à s'étendre à l'ensemble du Nord et du Pas-de-Calais.</p>
         </section>
 
-        <!-- Nos partenaires & financeurs -->
-        <section class="content-section" id="partenaires">
+        <!-- Nos partenaires & financeurs - Professionnel -->
+        <section class="content-section" id="partenaires-professionnel">
             <h1>Nos partenaires & financeurs</h1>
             <p>Unis-Vers Social inscrit son action dans une logique de coopération territoriale.</p>
             
@@ -151,6 +202,15 @@
 
         <!-- Actualités -->
         <section class="content-section" id="actualites">
+            <!-- Sélecteur de profil -->
+            <div class="profile-selector">
+                <p class="profile-selector-label">Qui suis-je ?</p>
+                <div class="profile-selector-options">
+                    <button class="profile-button" data-profile="usager">Usager</button>
+                    <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                </div>
+            </div>
+
             <h1>Actualités</h1>
             <p>Retrouvez toutes nos dernières actualités et actions sur notre page Facebook :</p>
             <div class="fb-container">
@@ -168,6 +228,15 @@
 
         <!-- Infos & Contact -->
         <section class="content-section" id="contact">
+            <!-- Sélecteur de profil -->
+            <div class="profile-selector">
+                <p class="profile-selector-label">Qui suis-je ?</p>
+                <div class="profile-selector-options">
+                    <button class="profile-button" data-profile="usager">Usager</button>
+                    <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                </div>
+            </div>
+
             <h1>Infos & Contact</h1>
             
             <h2>Nous contacter</h2>
