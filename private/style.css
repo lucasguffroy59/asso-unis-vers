@@ -141,10 +141,10 @@ body {
     background-color: var(--color-primary);
     color: var(--color-white);
     text-decoration: none;
-    padding: 15px 30px;
+    padding: 12px 24px;
     border-radius: 25px;
-    font-size: 19px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
     box-shadow: 0 2px 8px rgba(167, 184, 158, 0.3);
     transition: all 0.3s ease;
     white-space: nowrap;
@@ -369,7 +369,7 @@ body {
     background-position: center;
     border: 2px solid var(--color-highlight-bg);
     border-radius: 8px;
-    padding: 40px 30px;
+    padding: 28px 25px;
     margin-bottom: 25px;
     text-align: center;
     box-shadow: 0 4px 14px rgba(185, 177, 217, 0.2);
@@ -380,9 +380,9 @@ body {
 }
 
 .content-section .profile-selector-label {
-    font-size: 38px;
+    font-size: 32px;
     font-weight: 700;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     color: var(--color-highlight-text);
     text-align: center;
 }
