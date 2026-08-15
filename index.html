@@ -25,7 +25,7 @@
     <!-- Bandeau avec logo -->
     <header class="header-banner">
         <div class="header-content">
-            <img src="logo.png" alt="Unis-Vers Social" class="logo-image">
+            <img src="logo.png" alt="Unis-Vers Social" class="logo-image" id="logoHome">
             <div class="header-actions">
                 <div class="social-networks">
                     <span class="social-label">Nos réseaux</span>
@@ -40,8 +40,11 @@
                     </svg>
                 </a>
             </div>
-            <a href="https://www.helloasso.com/associations/unis-vers-social/paiements/dons-association-unis-vers-social" target="_blank" class="donation-button">
+            <a href="https://www.helloasso.com/associations/unis-vers-social/paiements/dons-association-unis-vers-social" target="_blank" class="donation-button-secondary">
                 Faire un don
+            </a>
+            <a href="https://urls.fr/rb1Bbg" target="_blank" class="join-button" id="joinButton">
+                Adhérer pour 1€
             </a>
             </div>
         </div>
@@ -49,7 +52,7 @@
 
     <!-- Navigation -->
     <nav class="navigation">
-        <div class="nav-item has-submenu" data-submenu="qui-sommes-nous">
+        <div class="nav-item has-submenu nav-not-adherent" data-submenu="qui-sommes-nous">
             <button type="button" class="nav-button nav-category-toggle active" aria-expanded="false">
                 Qui sommes-nous ? <span class="nav-chevron-inline">▾</span>
             </button>
@@ -81,6 +84,14 @@
                 data-target-professionnel="modalites-professionnel">Nos modalités d'intervention</button>
         <button class="nav-button nav-pro-only nav-hidden"
                 data-target-professionnel="partenaires-professionnel">Nos partenaires & financeurs</button>
+
+        <div class="nav-item has-submenu nav-adherent-only nav-hidden" data-submenu="assemblee">
+            <button type="button" class="nav-button nav-category-toggle" aria-expanded="false">
+                Assemblée générale <span class="nav-chevron-inline">▾</span>
+            </button>
+            <div class="nav-dropdown" data-submenu-panel="assemblee"></div>
+        </div>
+
         <button class="nav-button nav-always" data-section="actualites">Actualités</button>
         <button class="nav-button nav-always" data-section="contact">Infos & Contact</button>
         <span class="nav-profile-switcher" id="profileSwitcher"></span>
@@ -96,6 +107,7 @@
                 <div class="profile-selector-options">
                     <button class="profile-button" data-profile="usager">Usager</button>
                     <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                    <button class="profile-button" data-profile="adherent">Adhérent</button>
                 </div>
             </div>
 
@@ -117,6 +129,60 @@
         <section class="content-section" id="accueil-professionnel">
             <h1>Espace Professionnel</h1>
             <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Accueil profil Adhérent -->
+        <section class="content-section" id="accueil-adherent">
+            <h1>Espace Adhérent</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Écran de code d'accès Adhérent -->
+        <section class="content-section" id="adherent-code">
+            <h1>Espace Adhérent</h1>
+            <p>Cet espace est réservé aux adhérents de l'association. Merci de saisir votre code d'accès pour continuer.</p>
+            <form id="adherentCodeForm" class="adherent-code-form">
+                <input type="text" id="adherentCodeInput" class="adherent-code-input" placeholder="Code d'accès" autocomplete="off">
+                <button type="submit" class="nav-button">Valider</button>
+            </form>
+            <p id="adherentCodeError" class="adherent-code-error" hidden>Code incorrect, merci de réessayer.</p>
+        </section>
+
+        <!-- Assemblée générale - Documents -->
+        <section class="content-section" id="ag-documents">
+            <h1>Documents</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Assemblée générale - Évènements à venir -->
+        <section class="content-section" id="ag-evenements">
+            <h1>Évènements à venir</h1>
+            <p>Contenu à venir.</p>
+        </section>
+
+        <!-- Assemblée générale - Mes propositions -->
+        <section class="content-section" id="ag-propositions">
+            <h1>Mes propositions</h1>
+            <p>Vous avez une idée à soumettre au bureau de l'association ? Utilisez le formulaire ci-dessous.</p>
+            <form id="propositionForm" class="proposition-form">
+                <label for="propositionNom">Nom</label>
+                <input type="text" id="propositionNom" name="nom" required>
+
+                <label for="propositionPrenom">Prénom</label>
+                <input type="text" id="propositionPrenom" name="prenom" required>
+
+                <label for="propositionEmail">Email</label>
+                <input type="email" id="propositionEmail" name="email" required>
+
+                <label for="propositionTitre">Titre de la proposition</label>
+                <input type="text" id="propositionTitre" name="titre" required>
+
+                <label for="propositionDetail">Votre proposition</label>
+                <textarea id="propositionDetail" name="detail" rows="6" required></textarea>
+
+                <button type="submit" class="nav-button">Je soumets mon idée</button>
+            </form>
+            <p id="propositionSuccess" class="proposition-success" hidden>Merci, votre proposition a bien été enregistrée !</p>
         </section>
 
         <!-- Nos services & missions - Usager -->
@@ -178,6 +244,7 @@
                 <div class="profile-selector-options">
                     <button class="profile-button" data-profile="usager">Usager</button>
                     <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                    <button class="profile-button" data-profile="adherent">Adhérent</button>
                 </div>
             </div>
 
@@ -280,6 +347,7 @@
                 <div class="profile-selector-options">
                     <button class="profile-button" data-profile="usager">Usager</button>
                     <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                    <button class="profile-button" data-profile="adherent">Adhérent</button>
                 </div>
             </div>
 
@@ -306,6 +374,7 @@
                 <div class="profile-selector-options">
                     <button class="profile-button" data-profile="usager">Usager</button>
                     <button class="profile-button" data-profile="professionnel">Professionnel</button>
+                    <button class="profile-button" data-profile="adherent">Adhérent</button>
                 </div>
             </div>
 
@@ -313,7 +382,7 @@
             
             <h2>Nous contacter</h2>
             <p><strong>Téléphone :</strong> 01 XX XX XX XX</p>
-            <p><strong>Email :</strong> unis.vers.social@gmail.com</p>
+            <p><strong>Email :</strong> contact@unis-vers-social.fr</p>
             <p><strong>Adresse :</strong> Le Toit Commun au 15 Rue Lanoy à Lens, Nord-Pas-de-Calais</p>
             
             <h2>Horaires de permanence</h2>
@@ -336,12 +405,42 @@ Sur rendez-vous dans les communes partenaires</p>
             <h2>Rejoindre l'association</h2>
             <p>Vous souhaitez devenir bénévole ou adhérer à l'association ? N'hésitez pas à nous contacter pour échanger sur les différentes façons de vous impliquer.</p>
         </section>
+
+        <!-- Mentions légales -->
+        <section class="content-section" id="mentions-legales">
+            <h1>Mentions légales</h1>
+
+            <h2>Éditeur du site</h2>
+            <p>Le présent site est édité par l'association <strong>Unis-Vers Social</strong>, association loi 1901.</p>
+            <p><strong>Forme juridique :</strong> Association loi 1901</p>
+            <p><strong>Siège social / coordonnées :</strong> Le Toit Commun, 15 Rue Lanoy, Lens, Nord-Pas-de-Calais</p>
+            <p><strong>SIRET :</strong> 990 890 220 00017</p>
+            <p><strong>Code APE :</strong> 94.99Z</p>
+            <p><strong>Email :</strong> contact@unis-vers-social.fr</p>
+
+            <h2>Directrice de la publication</h2>
+            <p>La publication du site est assurée par les co-dirigeantes de l'association, Gwen et Léa.</p>
+
+            <h2>Hébergement</h2>
+            <p>Ce site est hébergé par :</p>
+            <p><strong>GitHub, Inc.</strong><br>
+            88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis</p>
+
+            <h2>Nom de domaine</h2>
+            <p>Le nom de domaine de ce site est enregistré auprès de :</p>
+            <p><strong>OVH SAS</strong><br>
+            2 rue Kellermann, 59100 Roubaix, France</p>
+
+            <h2>Propriété intellectuelle</h2>
+            <p>L'ensemble des contenus présents sur ce site (textes, images, logo) est la propriété d'Unis-Vers Social, sauf mention contraire, et ne peut être reproduit sans autorisation préalable.</p>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2025 <a href="Statuts association Unis-Vers Social.pdf" target="_blank" class="footer-link">Unis-Vers Social</a> - Association loi 1901</p>
         <p>Lens, Nord-Pas-de-Calais</p>
+        <p><button type="button" class="footer-link footer-link-button" data-section="mentions-legales">Mentions légales</button></p>
     </footer>
 
     <script src="script.js"></script>

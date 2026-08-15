@@ -1,3 +1,35 @@
+/* ==========================================================================
+   Palette centralisée — seul endroit à modifier pour changer les couleurs
+   ========================================================================== */
+:root {
+    /* Marque (dérivée du logo Unis-Vers Social, ton doux/dilué) */
+    --color-primary: #8FB5A3;
+    --color-primary-hover: #6B9884;
+    --color-secondary: #E3B98C;
+    --color-secondary-hover: #D19F68;
+    --color-secondary-tint: #FBF1E8;
+    --color-offwhite: #FAF6F1;
+    --color-highlight-bg: #F0CFA0;
+    --color-highlight-text: #5C3D1E;
+
+    /* Neutres */
+    --color-white: #ffffff;
+    --color-text: #333333;
+    --color-text-muted: #555555;
+    --color-text-heading: #222222;
+    --color-border: #e0e0e0;
+    --color-border-hover: #999999;
+    --color-bg-hover: #f0f0f0;
+
+    /* Retours utilisateur */
+    --color-error: #c0392b;
+    --color-success: #1e7e34;
+
+    /* Réseaux sociaux */
+    --color-facebook: #1877f2;
+    --color-instagram: #e4405f;
+}
+
 /* Reset et styles de base */
 * {
     margin: 0;
@@ -12,8 +44,8 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
+    color: var(--color-text);
+    background-color: var(--color-offwhite);
     overflow-x: hidden;
     width: 100%;
 }
@@ -21,7 +53,7 @@ body {
 /* Bandeau header */
 .header-banner {
     width: 100%;
-    background: linear-gradient(135deg, #b8d4e8 0%, #d4e6f1 100%);
+    background-color: var(--color-offwhite);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px 0;
 }
@@ -40,6 +72,7 @@ body {
     width: auto;
     display: block;
     margin-left: 0;
+    cursor: pointer;
 }
 
 .header-actions {
@@ -61,49 +94,72 @@ body {
 .social-label {
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: var(--color-text);
     margin-right: 5px;
 }
 
 .social-link {
-    color: #555;
+    color: var(--color-text-muted);
     transition: color 0.3s ease, transform 0.2s ease;
     display: flex;
     align-items: center;
 }
 
 .social-link:hover {
-    color: #1877f2;
+    color: var(--color-facebook);
     transform: scale(1.1);
 }
 
 .social-link:last-child:hover {
-    color: #e4405f;
+    color: var(--color-instagram);
 }
 
-/* Bouton Faire un don */
-.donation-button {
-    background-color: #333;
-    color: #fff;
+/* Bouton Faire un don (secondaire, calqué sur "Nos réseaux") */
+.donation-button-secondary {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: var(--color-secondary);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.donation-button-secondary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(227, 185, 140, 0.25);
+}
+
+/* Bouton Adhérer (principal) */
+.join-button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
     text-decoration: none;
     padding: 12px 24px;
     border-radius: 25px;
     font-size: 15px;
     font-weight: 500;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(143, 181, 163, 0.3);
     transition: all 0.3s ease;
     white-space: nowrap;
 }
 
-.donation-button:hover {
-    background-color: #555;
+.join-button:hover {
+    background-color: var(--color-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(143, 181, 163, 0.4);
+}
+
+.join-button.nav-hidden {
+    display: none;
 }
 
 /* Navigation */
 .navigation {
-    background-color: #fff;
+    background-color: var(--color-white);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -114,8 +170,8 @@ body {
 
 .nav-button {
     background-color: transparent;
-    color: #555;
-    border: 2px solid #e0e0e0;
+    color: var(--color-text-muted);
+    border: 2px solid var(--color-border);
     padding: 12px 24px;
     font-size: 15px;
     font-weight: 500;
@@ -126,15 +182,15 @@ body {
 }
 
 .nav-button:hover {
-    background-color: #f0f0f0;
-    border-color: #999;
-    color: #333;
+    background-color: var(--color-secondary-tint);
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
 }
 
 .nav-button.active {
-    background-color: #333;
-    color: #fff;
-    border-color: #333;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
 }
 
 .nav-button.nav-hidden,
@@ -167,14 +223,14 @@ body {
 .nav-item-buttons {
     display: flex;
     align-items: stretch;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--color-border);
     border-radius: 5px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .nav-item-buttons:hover {
-    border-color: #999;
+    border-color: var(--color-secondary);
 }
 
 .nav-item .nav-item-buttons .nav-button {
@@ -185,17 +241,17 @@ body {
 .nav-chevron-toggle {
     background-color: transparent;
     border: none;
-    border-left: 2px solid #e0e0e0;
+    border-left: 2px solid var(--color-border);
     padding: 0 14px;
     font-size: 12px;
-    color: #555;
+    color: var(--color-text-muted);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .nav-chevron-toggle:hover {
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: var(--color-secondary-tint);
+    color: var(--color-secondary);
 }
 
 .has-submenu.open > .nav-category-toggle .nav-chevron-inline {
@@ -217,8 +273,8 @@ body {
     left: 0;
     margin-top: 6px;
     min-width: 220px;
-    background-color: #fff;
-    border: 2px solid #e0e0e0;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-border);
     border-radius: 5px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     padding: 8px;
@@ -243,15 +299,15 @@ body {
     text-align: left;
     padding: 10px 14px;
     border-radius: 4px;
-    color: #555;
+    color: var(--color-text-muted);
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .nav-dropdown button:hover {
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: var(--color-secondary-tint);
+    color: var(--color-secondary);
 }
 
 /* Sous-menu imbriqué "Nos équipes" (dans "Qui sommes-nous ?"), déroulé à droite */
@@ -268,7 +324,7 @@ body {
 }
 
 .nav-subitem-row:hover {
-    background-color: #f0f0f0;
+    background-color: var(--color-secondary-tint);
 }
 
 .nav-subitem-row .nav-button {
@@ -300,31 +356,15 @@ body {
     flex-wrap: wrap;
 }
 
-.profile-switch-select {
-    background-color: transparent;
-    color: #555;
-    border: 2px dashed #999;
-    padding: 12px 24px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
 
-.profile-switch-select:hover {
-    background-color: #f0f0f0;
-    border-color: #666;
-    color: #333;
-}
-
-/* Sélecteur "Qui suis-je ?" */
+/* Sélecteur "Qui suis-je ?" — mis en avant dans la hiérarchie visuelle */
 .profile-selector {
-    background-color: #f0f4f8;
+    background-color: var(--color-highlight-bg);
     border-radius: 8px;
     padding: 20px 25px;
     margin-bottom: 25px;
     text-align: center;
+    box-shadow: 0 4px 14px rgba(240, 207, 160, 0.35);
 }
 
 .profile-selector.profile-selector-hidden {
@@ -332,9 +372,9 @@ body {
 }
 
 .content-section .profile-selector-label {
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 12px;
-    color: #333;
+    color: var(--color-highlight-text);
     text-align: center;
 }
 
@@ -346,9 +386,9 @@ body {
 }
 
 .profile-button {
-    background-color: #fff;
-    color: #333;
-    border: 2px solid #333;
+    background-color: var(--color-white);
+    color: var(--color-highlight-text);
+    border: 2px solid var(--color-highlight-text);
     padding: 10px 22px;
     font-size: 15px;
     font-weight: 500;
@@ -358,8 +398,80 @@ body {
 }
 
 .profile-button:hover {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--color-highlight-text);
+    color: var(--color-white);
+}
+
+/* Écran de code d'accès Adhérent */
+.adherent-code-form {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 25px 0 10px;
+}
+
+.adherent-code-input {
+    flex: 0 1 260px;
+    padding: 12px 18px;
+    font-size: 15px;
+    border: 2px solid var(--color-border);
+    border-radius: 5px;
+    color: var(--color-text);
+    text-align: center;
+}
+
+.adherent-code-input:focus {
+    outline: none;
+    border-color: var(--color-border-hover);
+}
+
+.adherent-code-error {
+    color: var(--color-error);
+    font-weight: 500;
+}
+
+/* Formulaire "Mes propositions" */
+.proposition-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 25px 0;
+    max-width: 600px;
+}
+
+.proposition-form label {
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 12px;
+}
+
+.proposition-form input,
+.proposition-form textarea {
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 2px solid var(--color-border);
+    border-radius: 5px;
+    color: var(--color-text);
+    font-family: inherit;
+    resize: vertical;
+}
+
+.proposition-form input:focus,
+.proposition-form textarea:focus {
+    outline: none;
+    border-color: var(--color-border-hover);
+}
+
+.proposition-form button {
+    align-self: flex-start;
+    margin-top: 20px;
+}
+
+.proposition-success {
+    color: var(--color-success);
+    font-weight: 500;
+    margin-top: 15px;
 }
 
 /* Contenu principal */
@@ -392,15 +504,15 @@ body {
 
 .content-section h1 {
     font-size: 32px;
-    color: #222;
+    color: var(--color-text-heading);
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 3px solid #333;
+    border-bottom: 3px solid var(--color-text);
 }
 
 .content-section h2 {
     font-size: 24px;
-    color: #333;
+    color: var(--color-text);
     margin-top: 30px;
     margin-bottom: 15px;
 }
@@ -408,7 +520,7 @@ body {
 .content-section p {
     margin-bottom: 15px;
     text-align: justify;
-    color: #555;
+    color: var(--color-text-muted);
 }
 
 .content-section ul {
@@ -418,21 +530,21 @@ body {
 
 .content-section li {
     margin-bottom: 10px;
-    color: #555;
+    color: var(--color-text-muted);
 }
 
 .content-section strong {
-    color: #333;
+    color: var(--color-text);
 }
 
 .content-section a {
-    color: #333;
+    color: var(--color-text);
     text-decoration: underline;
     transition: color 0.3s ease;
 }
 
 .content-section a:hover {
-    color: #555;
+    color: var(--color-text-muted);
 }
 
 .contact-link {
@@ -452,8 +564,8 @@ body {
 
 /* Footer */
 .footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--color-text);
+    color: var(--color-white);
     text-align: center;
     padding: 30px 20px;
     margin-top: 60px;
@@ -465,13 +577,22 @@ body {
 }
 
 .footer-link {
-    color: #fff;
+    color: var(--color-white);
     text-decoration: underline;
     transition: opacity 0.3s ease;
 }
 
 .footer-link:hover {
     opacity: 0.8;
+}
+
+.footer-link-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 /* Responsive */
@@ -512,7 +633,8 @@ body {
         height: 20px;
     }
 
-    .donation-button {
+    .donation-button-secondary,
+    .join-button {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -592,12 +714,6 @@ body {
         width: calc(100% - 16px);
     }
 
-    .profile-switch-select {
-        padding: 10px 16px;
-        font-size: 13px;
-        width: 100%;
-    }
-
     .content-section h1 {
         font-size: 24px;
         margin-top: 10px;
@@ -669,7 +785,8 @@ body {
         height: 18px;
     }
 
-    .donation-button {
+    .donation-button-secondary,
+    .join-button {
         padding: 9px 10px;
         font-size: 13px;
     }
