@@ -810,24 +810,26 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
         white-space: normal;
     }
 
-    /* Neutralise la couleur "active" dans le menu mobile : même style pour tous */
+    /* Neutralise entièrement l'état "active" dans le menu mobile : style rigoureusement
+       identique pour tous les éléments, quelle que soit la page en cours. */
     .navigation .nav-button.active,
     .navigation .nav-category-toggle.active {
         background-color: var(--color-white);
         border-color: var(--color-border);
-        color: var(--color-primary-hover);
-        font-weight: 700;
+        color: var(--color-text-muted);
+        font-weight: 500;
     }
 
     .navigation .nav-subitem-row.active {
-        background-color: var(--color-secondary-tint);
+        background-color: transparent;
     }
 
     .navigation .nav-subitem-row.active .nav-button,
     .navigation .nav-subitem-row.active .nav-chevron-toggle {
         background-color: transparent;
         border-color: transparent;
-        color: var(--color-primary-hover);
+        color: var(--color-text-muted);
+        font-weight: 500;
     }
 
     .nav-item-buttons {
@@ -992,12 +994,6 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
     .navigation {
         padding: 8px;
         gap: 6px;
-    }
-
-    .nav-button {
-        padding: 9px 12px;
-        font-size: 12px;
-        min-width: 120px;
     }
 
     .profile-selector {
