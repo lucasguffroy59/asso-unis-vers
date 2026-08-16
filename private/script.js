@@ -196,6 +196,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function closeAllSubmenus() {
         closeSubmenus(null);
+        closeMobileMenu();
+    }
+
+    function closeMobileMenu() {
+        document.body.classList.remove('mobile-menu-open');
+        if (mobileMenuToggle) mobileMenuToggle.setAttribute('aria-expanded', 'false');
     }
 
     function renderSubmenus() {
@@ -298,6 +304,16 @@ document.addEventListener('DOMContentLoaded', function () {
     if (logoHome) {
         logoHome.addEventListener('click', function () {
             navigateToProfile(null);
+        });
+    }
+
+    // Menu burger (mobile) : ouvre/ferme le panneau réseaux/dons/navigation
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const isOpen = document.body.classList.toggle('mobile-menu-open');
+            mobileMenuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
     }
 
