@@ -196,6 +196,12 @@ body {
     border-color: var(--color-primary);
 }
 
+.nav-button.active:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    color: var(--color-white);
+}
+
 .nav-button.nav-hidden,
 .nav-item.nav-hidden,
 .nav-item.has-submenu.nav-hidden {
@@ -274,8 +280,9 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    margin-top: 6px;
-    min-width: 220px;
+    margin-top: 0;
+    min-width: 100%;
+    width: max-content;
     background-color: var(--color-white);
     border: 2px solid var(--color-border);
     border-radius: 5px;
@@ -323,11 +330,25 @@ body {
     display: flex;
     align-items: stretch;
     border-radius: 4px;
+    overflow: hidden;
     transition: background-color 0.2s ease;
 }
 
 .nav-subitem-row:hover {
     background-color: var(--color-secondary-tint);
+}
+
+.nav-subitem-row.active {
+    background-color: var(--color-primary);
+}
+
+.nav-subitem-row.active:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.nav-subitem-row.active .nav-button,
+.nav-subitem-row.active .nav-chevron-toggle {
+    color: var(--color-white);
 }
 
 .nav-subitem-row .nav-button {
@@ -350,7 +371,7 @@ body {
     top: 0;
     left: 100%;
     margin-top: 0;
-    margin-left: 6px;
+    margin-left: 0;
 }
 
 .nav-profile-switcher {

@@ -80,8 +80,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setActiveNavButton(sectionId) {
         document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.nav-subitem-row').forEach(row => row.classList.remove('active'));
         const btn = document.querySelector(`.nav-button[data-section="${sectionId}"]`);
-        if (btn) btn.classList.add('active');
+        if (btn) {
+            btn.classList.add('active');
+            const row = btn.closest('.nav-subitem-row');
+            if (row) row.classList.add('active');
+        }
         markCategoryActive(sectionId);
     }
 
@@ -207,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 btn.textContent = entry.label;
                 btn.addEventListener('click', function () {
                     document.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.nav-subitem-row').forEach(row => row.classList.remove('active'));
                     showSection(entry.target);
                     markCategoryActive(entry.target);
                     closeAllSubmenus();
@@ -300,6 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.addEventListener('click', function () {
             const sectionId = this.getAttribute('data-section');
             document.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.nav-subitem-row').forEach(row => row.classList.remove('active'));
             showSection(sectionId);
             markCategoryActive(sectionId);
             closeAllSubmenus();
@@ -325,6 +332,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const targetId = this.getAttribute('data-target-' + currentProfile);
             if (!targetId) return;
             document.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.nav-subitem-row').forEach(row => row.classList.remove('active'));
             this.classList.add('active');
             showSection(targetId);
             markCategoryActive(targetId);
