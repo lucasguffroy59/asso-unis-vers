@@ -362,17 +362,59 @@ body {
 
 /* Sélecteur "Qui suis-je ?" — mis en avant dans la hiérarchie visuelle */
 .profile-selector {
-    background-color: var(--color-highlight-bg-soft);
-    background-image: url('qui-suis-je.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
+    position: relative;
+    z-index: 0;
+    background-color: #EEEAF7;
     border: 2px solid var(--color-highlight-bg);
     border-radius: 8px;
     padding: 28px 25px;
     margin-bottom: 25px;
     text-align: center;
     box-shadow: 0 4px 14px rgba(185, 177, 217, 0.2);
+    overflow: hidden;
+}
+
+.profile-selector-corners {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.profile-selector-corners span {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.profile-selector-corners .corner-tl {
+    top: 0;
+    left: 0;
+    background-image: url('top-left.png');
+    background-position: top left;
+}
+
+.profile-selector-corners .corner-tr {
+    top: 0;
+    right: 0;
+    background-image: url('top-right.png');
+    background-position: top right;
+}
+
+.profile-selector-corners .corner-bl {
+    bottom: 0;
+    left: 0;
+    background-image: url('bottom-left.png');
+    background-position: bottom left;
+}
+
+.profile-selector-corners .corner-br {
+    bottom: 0;
+    right: 0;
+    background-image: url('bottom-right.png');
+    background-position: bottom right;
 }
 
 .profile-selector.profile-selector-hidden {
