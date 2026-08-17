@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const navAdherentOnlyElements = document.querySelectorAll('.nav-adherent-only');
     const navNotAdherentElements = document.querySelectorAll('.nav-not-adherent');
     const joinButton = document.getElementById('joinButton');
+    const donationButton = document.getElementById('donationButton');
     const profileButtons = document.querySelectorAll('.profile-button');
     const profileSelectors = document.querySelectorAll('.profile-selector');
     const profileSwitcher = document.getElementById('profileSwitcher');
@@ -175,8 +176,12 @@ document.addEventListener('DOMContentLoaded', function () {
         navNotAdherentElements.forEach(el => {
             el.classList.toggle('nav-hidden', currentProfile === 'adherent');
         });
+        const isValidatedAdherent = currentProfile === 'adherent' && adherentUnlocked;
         if (joinButton) {
-            joinButton.classList.toggle('nav-hidden', currentProfile === 'adherent' && adherentUnlocked);
+            joinButton.classList.toggle('nav-hidden', isValidatedAdherent);
+        }
+        if (donationButton) {
+            donationButton.classList.toggle('is-primary', isValidatedAdherent);
         }
         profileSelectors.forEach(el => {
             el.classList.toggle('profile-selector-hidden', !!currentProfile);

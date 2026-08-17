@@ -173,6 +173,20 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
     box-shadow: 0 2px 8px rgba(167, 184, 158, 0.35);
 }
 
+/* "Faire un don" devient le bouton principal une fois l'espace Adhérent débloqué */
+.donation-button-secondary.is-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(167, 184, 158, 0.3);
+}
+
+.donation-button-secondary.is-primary:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    box-shadow: 0 4px 12px rgba(167, 184, 158, 0.4);
+}
+
 /* Bouton Adhérer (principal) */
 .join-button {
     background-color: var(--color-primary);
