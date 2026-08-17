@@ -70,7 +70,17 @@ document.addEventListener('DOMContentLoaded', function () {
         return profile ? BASE_PATH + '/' + profile : BASE_PATH;
     }
 
+    // Une section fait partie de l'espace Adhérent protégé si c'est sa page d'accueil
+    // ou une page de l'Assemblée générale (préfixe "ag-") — centralisé ici pour que
+    // toute nouvelle page adhérent soit protégée automatiquement.
+    function isAdherentProtectedSection(sectionId) {
+        return sectionId === 'accueil-adherent' || sectionId.indexOf('ag-') === 0;
+    }
+
     function showSection(sectionId) {
+        if (isAdherentProtectedSection(sectionId) && !adherentUnlocked) {
+            sectionId = 'adherent-code';
+        }
         sections.forEach(section => section.classList.remove('active'));
         const targetSection = document.getElementById(sectionId);
         if (targetSection) {
