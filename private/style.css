@@ -1,3 +1,12 @@
+/* Police manuscrite pour les grands titres (licence OFL, libre d'usage) */
+@font-face {
+    font-family: 'Alex Brush';
+    src: url('fonts/AlexBrush.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* ==========================================================================
    Palette centralisée — seul endroit à modifier pour changer les couleurs
    ========================================================================== */
@@ -651,11 +660,13 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
 }
 
 .content-section h1 {
-    font-size: 26px;
+    font-family: 'Alex Brush', cursive;
+    font-weight: 400;
+    font-size: 46px;
     color: var(--color-text-heading);
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--color-text);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--color-text);
 }
 
 .content-section h2 {
@@ -1290,7 +1301,7 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
     }
 
     .content-section h1 {
-        font-size: 24px;
+        font-size: 36px;
         margin-top: 10px;
     }
 
@@ -1476,7 +1487,7 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
     }
 
     .content-section h1 {
-        font-size: 22px;
+        font-size: 30px;
         margin-top: 8px;
     }
 
