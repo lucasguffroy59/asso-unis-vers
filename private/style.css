@@ -742,17 +742,24 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
 }
 
 .team-card {
+    position: relative;
     background-color: var(--color-white);
     border: 2px solid var(--color-border);
     border-radius: 8px;
-    padding: 24px 20px 34px;
-    text-align: center;
+    padding: 24px 24px 90px;
+    text-align: left;
+}
+
+.team-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .team-avatar {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 16px;
+    width: 190px;
+    height: 190px;
+    flex-shrink: 0;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -782,32 +789,40 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
     color: var(--color-primary);
 }
 
+.team-info {
+    padding-top: 6px;
+}
+
 .team-name {
-    font-size: 20px;
+    font-size: 26px;
+    font-weight: 700;
     color: var(--color-text-heading);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .team-role {
-    color: var(--color-text-muted);
-    text-align: center;
-    font-size: 15px;
-    margin-bottom: 20px;
+    color: var(--color-text);
+    text-align: left;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 0;
 }
 
-/* Post-it "Nos +" tenu par une punaise */
+/* Post-it "Nos +" tenu par une punaise, en superposition du coin bas droit de la carte */
 .team-postit {
-    position: relative;
-    margin: 0 auto;
-    max-width: 260px;
+    position: absolute;
+    right: -12px;
+    bottom: -12px;
+    max-width: 230px;
     padding: 18px 14px 12px;
     border-radius: 4px;
-    transform: rotate(-1.5deg);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    transform: rotate(-2deg);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    z-index: 2;
 }
 
 .team-card:nth-child(2n) .team-postit {
-    transform: rotate(1.5deg);
+    transform: rotate(2deg);
 }
 
 .team-postit-pin {
@@ -1282,8 +1297,29 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
         gap: 20px;
     }
 
+    .team-card {
+        padding: 20px 20px 80px;
+    }
+
+    .team-avatar {
+        width: 140px;
+        height: 140px;
+    }
+
+    .team-name {
+        font-size: 22px;
+    }
+
+    .team-role {
+        font-size: 15px;
+    }
+
+    .team-postit {
+        max-width: 200px;
+    }
+
     .team-card:nth-child(2n) .team-postit {
-        transform: rotate(-1.5deg);
+        transform: rotate(2deg);
     }
 
     .service-cards {
@@ -1313,6 +1349,33 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
 }
 
 @media (max-width: 480px) {
+    .team-card {
+        padding: 18px 16px 90px;
+    }
+
+    .team-card-header {
+        gap: 14px;
+    }
+
+    .team-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .team-name {
+        font-size: 19px;
+        margin-bottom: 6px;
+    }
+
+    .team-role {
+        font-size: 14px;
+    }
+
+    .team-postit {
+        max-width: 170px;
+        padding: 14px 12px 10px;
+    }
+
     .header-banner {
         padding: 12px 0;
     }
