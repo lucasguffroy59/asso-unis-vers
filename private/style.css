@@ -256,7 +256,9 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
 
 .nav-button.nav-hidden,
 .nav-item.nav-hidden,
-.nav-item.has-submenu.nav-hidden {
+.nav-item.has-submenu.nav-hidden,
+.nav-chevron-toggle.nav-hidden,
+.nav-dropdown.nav-hidden {
     display: none;
 }
 
@@ -359,6 +361,10 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
 @media (hover: hover) and (pointer: fine) {
     .has-submenu:hover > .nav-dropdown {
         display: flex;
+    }
+
+    .has-submenu:hover > .nav-dropdown.nav-hidden {
+        display: none;
     }
 }
 
@@ -901,101 +907,95 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
     background-image: url('silhouette-groupe.svg');
 }
 
-/* Accompagnements individuels : ronds thématiques */
-.theme-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+/* Accompagnements individuels : accordéon type FAQ (une ligne par thème,
+   la liste s'ouvre juste sous la ligne cliquée, jamais ailleurs sur la page) */
+.theme-accordion {
     margin-top: 25px;
-}
-
-.theme-item {
-    flex: 0 0 140px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.theme-circle {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    border: none;
-    color: var(--color-white);
-    font-size: 14px;
-    font-weight: 600;
-    padding: 12px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1.25;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-}
-
-.theme-circle:hover,
-.theme-circle[aria-expanded="true"] {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.theme-circle-1  { background-color: #B9B1D9; }
-.theme-circle-2  { background-color: #A7B89E; }
-.theme-circle-3  { background-color: #8FB3C9; }
-.theme-circle-4  { background-color: #C9967A; }
-.theme-circle-5  { background-color: #D89BB0; }
-.theme-circle-6  { background-color: #D0AE5C; }
-.theme-circle-7  { background-color: #7FB3A3; }
-.theme-circle-8  { background-color: #C97F7F; }
-.theme-circle-9  { background-color: #8E96C9; }
-.theme-circle-10 { background-color: #A99BBD; }
-
-/* Hauteur fixe et réservée en permanence dans la mise en page : ouvrir un thème
-   ne doit jamais déplacer le footer. Le contenu apparaît/disparaît en fondu
-   à l'intérieur de cet espace ; overflow-y en sécurité si un texte dépasse. */
-.theme-detail-panel {
-    margin: 25px auto 0;
-    max-width: 480px;
-    height: 300px;
-    overflow-y: auto;
     background-color: var(--color-white);
-    border: 2px solid transparent;
+    border: 2px solid var(--color-border);
     border-radius: 8px;
-    padding: 20px 24px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
 }
 
-.theme-detail-panel.theme-detail-panel-open {
-    opacity: 1;
-    visibility: visible;
-    border-color: var(--color-border);
+.theme-accordion-item {
+    border-bottom: 1px solid var(--color-border);
 }
 
-.theme-detail-title {
-    font-weight: 700;
-    color: var(--color-text-heading);
-    margin-bottom: 10px;
+.theme-accordion-item:last-child {
+    border-bottom: none;
 }
 
-.theme-detail-panel ul {
+.theme-accordion-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background-color: transparent;
+    border: none;
+    padding: 16px 18px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.theme-accordion-toggle:hover {
+    background-color: var(--color-offwhite);
+}
+
+.theme-accordion-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.theme-accordion-label {
+    flex: 1;
+}
+
+.theme-accordion-chevron {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    transition: transform 0.25s ease;
+}
+
+.theme-accordion-toggle[aria-expanded="true"] .theme-accordion-chevron {
+    transform: rotate(180deg);
+}
+
+.theme-accordion-panel {
+    padding: 0 18px 18px 48px;
+    animation: fadeIn 0.25s ease;
+}
+
+.theme-accordion-panel ul {
     padding-left: 20px;
     margin: 0;
 }
 
-.theme-detail-panel li {
+.theme-accordion-panel li {
     font-size: 15px;
     color: var(--color-text-muted);
     margin-bottom: 8px;
 }
 
-.theme-detail-panel li:last-child {
+.theme-accordion-panel li:last-child {
     margin-bottom: 0;
 }
+
+.theme-accent-1  .theme-accordion-dot { background-color: #B9B1D9; }
+.theme-accent-2  .theme-accordion-dot { background-color: #A7B89E; }
+.theme-accent-3  .theme-accordion-dot { background-color: #8FB3C9; }
+.theme-accent-4  .theme-accordion-dot { background-color: #C9967A; }
+.theme-accent-5  .theme-accordion-dot { background-color: #D89BB0; }
+.theme-accent-6  .theme-accordion-dot { background-color: #D0AE5C; }
+.theme-accent-7  .theme-accordion-dot { background-color: #7FB3A3; }
+.theme-accent-8  .theme-accordion-dot { background-color: #C97F7F; }
+.theme-accent-9  .theme-accordion-dot { background-color: #8E96C9; }
+.theme-accent-10 .theme-accordion-dot { background-color: #A99BBD; }
 
 /* Nos modalités d'intervention : liens icônes */
 .modalites-links {
@@ -1294,18 +1294,13 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
         min-height: 130px;
     }
 
-    .theme-grid {
-        gap: 16px;
+    .theme-accordion-toggle {
+        padding: 14px 14px;
+        font-size: 14px;
     }
 
-    .theme-item {
-        flex-basis: 120px;
-    }
-
-    .theme-circle {
-        width: 110px;
-        height: 110px;
-        font-size: 13px;
+    .theme-accordion-panel {
+        padding: 0 14px 16px 40px;
     }
 
     .modalites-links {
@@ -1401,18 +1396,17 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
         margin-top: 25px;
     }
 
-    .theme-grid {
-        gap: 12px;
+    .theme-accordion-toggle {
+        padding: 12px;
+        font-size: 13px;
+        gap: 10px;
     }
 
-    .theme-item {
-        flex-basis: 105px;
+    .theme-accordion-panel {
+        padding: 0 12px 14px 36px;
     }
 
-    .theme-circle {
-        width: 95px;
-        height: 95px;
-        font-size: 12px;
-        padding: 8px;
+    .theme-accordion-panel li {
+        font-size: 14px;
     }
 }
