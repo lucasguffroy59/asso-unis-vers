@@ -565,6 +565,57 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
     background-position: bottom right;
 }
 
+/* Nos équipes : mêmes illustrations de coin que l'encart "Qui suis-je ?",
+   replacées différemment selon la personne (voir HTML pour la répartition). */
+.team-card-corners {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.team-card-corners span {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.team-card-corners .team-corner-bl {
+    bottom: 0;
+    left: 0;
+    background-position: bottom left;
+}
+
+.team-card-corners .team-corner-tr {
+    top: 0;
+    right: 0;
+    background-position: top right;
+}
+
+.team-card-corners-a .team-corner-bl {
+    background-image: url('top-left.png');
+    /* Cette image est conçue pour un coin haut : miroir vertical pour que
+       sa masse colorée colle bien au coin bas où elle est replacée ici. */
+    transform: scaleY(-1);
+}
+
+.team-card-corners-a .team-corner-tr {
+    background-image: url('top-right.png');
+}
+
+.team-card-corners-b .team-corner-bl {
+    background-image: url('bottom-left.png');
+}
+
+.team-card-corners-b .team-corner-tr {
+    background-image: url('bottom-right.png');
+    /* Cette image est conçue pour un coin bas : miroir vertical pour que
+       sa masse colorée colle bien au coin haut où elle est replacée ici. */
+    transform: scaleY(-1);
+}
+
 .profile-selector.profile-selector-hidden {
     display: none;
 }
@@ -824,6 +875,7 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
 /* Carte dans le même mauve pâle que l'encart "Qui suis-je ?" */
 .team-card {
     position: relative;
+    z-index: 0;
     background-color: #EEEAF7;
     border: 2px solid var(--color-highlight-bg);
     border-radius: 8px;
