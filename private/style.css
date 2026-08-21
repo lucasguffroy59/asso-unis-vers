@@ -925,14 +925,12 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
 
 .team-postit-pin {
     position: absolute;
-    top: -9px;
+    top: -16px;
     left: 50%;
     transform: translateX(-50%);
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #e8877a, #b0392a);
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+    width: 32px;
+    height: auto;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
 }
 
 .team-postit-title {
