@@ -81,6 +81,11 @@
     box-sizing: border-box;
 }
 
+/* Les éléments de formulaire n'héritent pas de la police du body par défaut */
+button, input, textarea, select {
+    font-family: inherit;
+}
+
 html {
     overflow-x: hidden;
 }
