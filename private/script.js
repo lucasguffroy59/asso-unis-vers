@@ -9,24 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let adherentUnlocked = false;
 
     const SUBMENUS = {
-        equipes: {
-            none: [
-                { label: 'Sous-page 1', target: 'equipes-none-1' },
-                { label: 'Sous-page 2', target: 'equipes-none-2' }
-            ],
-            usager: [
-                { label: 'Sous-page 1', target: 'equipes-usager-1' },
-                { label: 'Sous-page 2', target: 'equipes-usager-2' }
-            ],
-            professionnel: [
-                { label: 'Sous-page 1', target: 'equipes-professionnel-1' },
-                { label: 'Sous-page 2', target: 'equipes-professionnel-2' }
-            ]
-        },
         services: {
             usager: [
-                { label: 'Sous-page 1', target: 'services-usager-sous-1' },
-                { label: 'Sous-page 2', target: 'services-usager-sous-2' }
+                { label: 'Accompagnements individuels', target: 'accompagnements-individuels' },
+                { label: 'Accompagnements collectifs', target: 'accompagnements-collectifs' }
             ],
             professionnel: [
                 { label: 'Sous-page 1', target: 'services-professionnel-sous-1' },
@@ -332,8 +318,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Lien "Mentions légales" dans le footer
-    document.querySelectorAll('.footer-link-button[data-section]').forEach(btn => {
+    // Liens génériques de navigation vers une section (footer "Mentions légales",
+    // icônes "Contacter l'association" dans les modalités d'intervention, etc.)
+    document.querySelectorAll('.section-nav-link[data-section]').forEach(btn => {
         btn.addEventListener('click', function () {
             const sectionId = this.getAttribute('data-section');
             document.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
@@ -342,6 +329,30 @@ document.addEventListener('DOMContentLoaded', function () {
             markCategoryActive(sectionId);
             closeAllSubmenus();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    // Cartes "Accompagnements individuels / collectifs" (page Nos services & missions)
+    document.querySelectorAll('.service-card[data-section]').forEach(card => {
+        card.addEventListener('click', function () {
+            const sectionId = this.getAttribute('data-section');
+            document.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.nav-subitem-row').forEach(row => row.classList.remove('active'));
+            showSection(sectionId);
+            markCategoryActive(sectionId);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    // Ronds thématiques de la page "Accompagnements individuels" : le clic bascule
+    // l'affichage du listing associé (accordéon) ; le survol souris le montre aussi
+    // sur les appareils qui le permettent (voir règle CSS @media hover: hover).
+    document.querySelectorAll('.theme-circle').forEach(circle => {
+        circle.addEventListener('click', function () {
+            const detail = this.parentElement.querySelector('.theme-detail');
+            const willOpen = detail.hidden;
+            detail.hidden = !willOpen;
+            this.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
         });
     });
 
