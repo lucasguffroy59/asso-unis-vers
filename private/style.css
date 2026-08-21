@@ -1460,7 +1460,10 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
     }
 
     .team-name-arc text {
-        font-size: 17px;
+        /* Le SVG garde un viewBox de 160 alors que son conteneur fait 108px ;
+           on compense l'échelle (108/160 ≈ 0,675) pour un rendu visuel réel
+           d'environ 18px, sinon le nom apparaît minuscule. */
+        font-size: 27px;
     }
 
     .team-role {
