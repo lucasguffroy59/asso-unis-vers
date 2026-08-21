@@ -930,7 +930,7 @@ body.mobile-menu-open .mobile-menu-toggle span:nth-child(3) {
     transform: translateX(-50%);
     width: 32px;
     height: auto;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+    filter: none;
 }
 
 .team-postit-title {
