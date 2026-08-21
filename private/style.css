@@ -1,7 +1,8 @@
 /* Police manuscrite pour les grands titres (licence OFL, libre d'usage) */
 @font-face {
     font-family: 'Alex Brush';
-    src: url('fonts/AlexBrush.ttf') format('truetype');
+    src: url('fonts/AlexBrush.woff2') format('woff2'),
+         url('fonts/AlexBrush.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -10,7 +11,8 @@
 /* Police de corps pour tout le reste du site (licence OFL, libre d'usage) */
 @font-face {
     font-family: 'Inter';
-    src: url('fonts/Inter-Regular.ttf') format('truetype');
+    src: url('fonts/Inter-Regular.woff2') format('woff2'),
+         url('fonts/Inter-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -18,7 +20,8 @@
 
 @font-face {
     font-family: 'Inter';
-    src: url('fonts/Inter-Medium.ttf') format('truetype');
+    src: url('fonts/Inter-Medium.woff2') format('woff2'),
+         url('fonts/Inter-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -26,7 +29,8 @@
 
 @font-face {
     font-family: 'Inter';
-    src: url('fonts/Inter-SemiBold.ttf') format('truetype');
+    src: url('fonts/Inter-SemiBold.woff2') format('woff2'),
+         url('fonts/Inter-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -34,7 +38,8 @@
 
 @font-face {
     font-family: 'Inter';
-    src: url('fonts/Inter-Bold.ttf') format('truetype');
+    src: url('fonts/Inter-Bold.woff2') format('woff2'),
+         url('fonts/Inter-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
