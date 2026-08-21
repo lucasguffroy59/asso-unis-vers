@@ -344,16 +344,55 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Ronds thématiques de la page "Accompagnements individuels" : le clic bascule
-    // l'affichage du listing associé (accordéon) ; le survol souris le montre aussi
-    // sur les appareils qui le permettent (voir règle CSS @media hover: hover).
+    // Ronds thématiques de la page "Accompagnements individuels" : le clic (ou le
+    // survol sur les appareils qui le permettent) affiche le listing associé dans
+    // un panneau unique sous la grille, pour ne jamais déplacer les autres ronds.
+    const themeDetailPanel = document.getElementById('themeDetailPanel');
+    const themeDetailTitle = document.getElementById('themeDetailTitle');
+    const themeDetailList = document.getElementById('themeDetailList');
+    const supportsThemeHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let activeThemeCircle = null;
+
+    // Le panneau a une hauteur fixe toujours réservée dans la mise en page (voir CSS) :
+    // on ne fait qu'apparaître/disparaître son contenu, le footer ne bouge jamais.
+    function showThemeDetail(circle) {
+        const template = document.getElementById(circle.getAttribute('data-theme-target'));
+        themeDetailList.innerHTML = '';
+        themeDetailList.appendChild(template.content.cloneNode(true));
+        themeDetailTitle.textContent = circle.textContent.trim();
+        themeDetailPanel.classList.add('theme-detail-panel-open');
+    }
+
+    function hideThemeDetail() {
+        themeDetailPanel.classList.remove('theme-detail-panel-open');
+    }
+
     document.querySelectorAll('.theme-circle').forEach(circle => {
         circle.addEventListener('click', function () {
-            const detail = this.parentElement.querySelector('.theme-detail');
-            const willOpen = detail.hidden;
-            detail.hidden = !willOpen;
-            this.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+            const wasActive = activeThemeCircle === this;
+            if (activeThemeCircle) {
+                activeThemeCircle.setAttribute('aria-expanded', 'false');
+            }
+            if (wasActive) {
+                activeThemeCircle = null;
+                hideThemeDetail();
+                return;
+            }
+            showThemeDetail(this);
+            this.setAttribute('aria-expanded', 'true');
+            activeThemeCircle = this;
         });
+
+        if (supportsThemeHover) {
+            circle.addEventListener('mouseenter', function () {
+                if (activeThemeCircle) return; // un choix figé par clic reste affiché
+                showThemeDetail(this);
+            });
+            circle.addEventListener('mouseleave', function () {
+                if (activeThemeCircle) return;
+                hideThemeDetail();
+            });
+        }
     });
 
     // Boutons de navigation toujours visibles (Notre histoire, équipes, actualités, contact)
